@@ -1,0 +1,243 @@
+[
+    {
+        "model": "jobs.company",
+        "pk": 1,
+        "fields": {
+            "name": "Apple",
+            "website": "https://www.apple.com"
+        }
+    },
+    {
+        "model": "jobs.company",
+        "pk": 2,
+        "fields": {
+            "name": "Google",
+            "website": "https://www.google.com"
+        }
+    },
+    {
+        "model": "jobs.company",
+        "pk": 3,
+        "fields": {
+            "name": "Microsoft",
+            "website": "https://www.microsoft.com"
+        }
+    },
+    {
+        "model": "jobs.company",
+        "pk": 4,
+        "fields": {
+            "name": "Amazon",
+            "website": "https://www.amazon.com"
+        }
+    },
+    {
+        "model": "jobs.company",
+        "pk": 5,
+        "fields": {
+            "name": "Netflix",
+            "website": "https://www.netflix.com"
+        }
+    },
+    {
+        "model": "jobs.location",
+        "pk": 1,
+        "fields": {
+            "company": 1,
+            "city": "Cupertino",
+            "country": "USA"
+        }
+    },
+    {
+        "model": "jobs.location",
+        "pk": 2,
+        "fields": {
+            "company": 2,
+            "city": "Mountain View",
+            "country": "USA"
+        }
+    },
+    {
+        "model": "jobs.location",
+        "pk": 3,
+        "fields": {
+            "company": 3,
+            "city": "Redmond",
+            "country": "USA"
+        }
+    },
+    {
+        "model": "jobs.location",
+        "pk": 4,
+        "fields": {
+            "company": 4,
+            "city": "Seattle",
+            "country": "USA"
+        }
+    },
+    {
+        "model": "jobs.location",
+        "pk": 5,
+        "fields": {
+            "company": 5,
+            "city": "Los Gatos",
+            "country": "USA"
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 1,
+        "fields": {
+            "title": "iOS Developer",
+            "company": 1,
+            "location": 1,
+            "description": "Develop apps for the iOS platform at Apple.",
+            "salary": "85000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 2,
+        "fields": {
+            "title": "MacOS Software Engineer",
+            "company": 1,
+            "location": 1,
+            "description": "Design and improve macOS system software.",
+            "salary": "90000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 3,
+        "fields": {
+            "title": "AI Research Scientist",
+            "company": 2,
+            "location": 2,
+            "description": "Research and develop next-generation AI models at Google.",
+            "salary": "130000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 4,
+        "fields": {
+            "title": "Cloud Engineer",
+            "company": 2,
+            "location": 2,
+            "description": "Maintain and expand Google's cloud services.",
+            "salary": "105000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 5,
+        "fields": {
+            "title": "Cybersecurity Specialist",
+            "company": 3,
+            "location": 3,
+            "description": "Protect Microsoft's products and customer data.",
+            "salary": "98000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 6,
+        "fields": {
+            "title": "Backend Developer",
+            "company": 3,
+            "location": 3,
+            "description": "Develop robust backend services in .NET.",
+            "salary": "87000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 7,
+        "fields": {
+            "title": "Solutions Architect",
+            "company": 4,
+            "location": 4,
+            "description": "Design scalable e-commerce systems for Amazon.",
+            "salary": "115000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 8,
+        "fields": {
+            "title": "Logistics Manager",
+            "company": 4,
+            "location": 4,
+            "description": "Manage Amazon's logistics and supply chain operations.",
+            "salary": "78000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 9,
+        "fields": {
+            "title": "Content Strategy Manager",
+            "company": 5,
+            "location": 5,
+            "description": "Oversee and strategize Netflix's content development.",
+            "salary": "95000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 10,
+        "fields": {
+            "title": "Full Stack Developer",
+            "company": 5,
+            "location": 5,
+            "description": "Work on Netflix's customer-facing web and mobile apps.",
+            "salary": "88000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 11,
+        "fields": {
+            "title": "Database Administrator",
+            "company": 4,
+            "location": 4,
+            "description": "Maintain and optimize high-availability databases for Amazon.",
+            "salary": "86000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 12,
+        "fields": {
+            "title": "UX Designer",
+            "company": 1,
+            "location": 1,
+            "description": "Design user experiences for Apple products.",
+            "salary": "92000.00",
+            "is_active": true
+        }
+    },
+    {
+        "model": "jobs.job",
+        "pk": 13,
+        "fields": {
+            "title": "Network Engineer",
+            "company": 2,
+            "location": 2,
+            "description": "Expand and maintain Google's global network infrastructure.",
+            "salary": "89000.00",
+            "is_active": true
+        }
+    }
+]

@@ -1,0 +1,19 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="title">Job Listings</h1>
+    <div class="job-list">
+      {% for job in jobs %}
+        <div class="job-item">
+          <h2 class="job-title"><a href="{% url 'job_detail' job.id %}">{{ job.title }}</a></h2>
+          <p class="job-company"><strong>Company:</strong> {{ job.company.name }}</p>
+          <p class="job-location"><strong>Location:</strong> {{ job.location.city }}, {{ job.location.country }}</p>
+          <p class="job-salary"><strong>Salary:</strong> ${{ job.salary }}</p>
+        </div>
+      {% empty %}
+        <p>No jobs available at the moment.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

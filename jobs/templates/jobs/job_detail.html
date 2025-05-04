@@ -1,0 +1,97 @@
+{% extends 'base_generic.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="job-title">{{ job.title }}</h1>
+    
+    <div class="job-details">
+      <section class="job-section">
+        <h2>Job Description</h2>
+        <p>{{ job.description }}</p>
+      </section>
+
+      <section class="job-section">
+        <h3>Company</h3>
+        <p><strong>Name:</strong> {{ job.company.name }}</p>
+        <p><strong>Website:</strong> <a href="{{ job.company.website }}" target="_blank">{{ job.company.website }}</a></p>
+      </section>
+
+      <section class="job-section">
+        <h3>Location</h3>
+        <p>{{ job.location.city }}, {{ job.location.country }}</p>
+      </section>
+
+      <section class="job-section">
+        <h3>Salary</h3>
+        <p>${{ job.salary }}</p>
+      </section>
+
+      <section class="job-section">
+        <h3>Applicants</h3>
+        <ul id="applicantList">
+          {% for applicant in job.applicants.all %}
+            <li>
+              {{ applicant.name }} - {{ applicant.email }}
+              <a href="{{ applicant.resume.url }}" target="_blank">Resume</a>
+            </li>
+          {% empty %}
+            <p>No applicants yet.</p>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section class="job-section">
+        <h3>Apply for this job</h3>
+        <form id="applicationForm" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Apply</button>
+        </form>
+        <div id="applicationMessage" class="message-box"></div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('applicationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const url = window.location.href;
+      const formData = new FormData(form);
+
+      fetch(url, {
+          method: 'POST',
+          headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+          },
+          body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+          const messageDiv = document.getElementById('applicationMessage');
+          if (data.success) {
+              messageDiv.className = 'message-success';
+              messageDiv.textContent = 'Application submitted successfully!';
+
+              const applicantList = document.getElementById('applicantList');
+              const newItem = document.createElement('li');
+              newItem.innerHTML = `${data.name} - ${data.email} <a href="${data.resume_url}" target="_blank">Resume</a>`;
+              applicantList.insertBefore(newItem, applicantList.firstChild);
+
+              form.reset();
+          } else {
+              messageDiv.className = 'message-error';
+              messageDiv.textContent = data.error;
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          const messageDiv = document.getElementById('applicationMessage');
+          messageDiv.className = 'message-error';
+          messageDiv.textContent = 'Something went wrong.';
+      });
+    });
+  </script>
+{% endblock %}
