@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Job
 from .forms import ApplicantForm
 from django.http import JsonResponse
+from rest_framework import viewsets
+from .models import Company, Location, Job, Applicant
+from .serializers import CompanySerializer, LocationSerializer, JobSerializer, ApplicantSerializer
 
 def job_list(request):
     jobs = Job.objects.all()
@@ -34,3 +36,19 @@ def job_detail(request, job_id):
         form = ApplicantForm()
 
     return render(request, 'jobs/job_detail.html', {'job': job, 'form': form})
+
+class CompanyViewSet(viewsets.ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
+class LocationViewSet(viewsets.ModelViewSet):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+
+class JobViewSet(viewsets.ModelViewSet):
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+
+class ApplicantViewSet(viewsets.ModelViewSet):
+    queryset = Applicant.objects.all()
+    serializer_class = ApplicantSerializer
